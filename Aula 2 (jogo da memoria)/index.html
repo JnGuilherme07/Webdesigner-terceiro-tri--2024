@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="box" data-value="1">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/The-King_King-Costela_Externa_Novo.png?mtime=20240620132633&focal=none">
+        </div>
+
+        <div class="box" data-value="2">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/whopper-duplo-thumb.png?mtime=20210916131816&focal=none">
+        </div>
+
+        <div class="box" data-value="3">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/Mega-Stacker-cheddar-3.0-thumb-cupom-m-d_2022-07-21-170304_esmv.png?mtime=20220721170304&focal=none">
+        </div>
+
+        <div class="box" data-value="4">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/The-King_King-Costela_Externa_Novo.png?mtime=20240620132633&focal=none">
+        </div>
+
+        <div class="box" data-value="5">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/whopper-duplo-thumb.png?mtime=20210916131816&focal=none">
+        </div>
+
+        <div class="box" data-value="6">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/chicken-duplo-thumb.png?mtime=20210916143308&focal=none">
+        </div>
+
+        <div class="box" data-value="7">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/Mega-Stacker-cheddar-3.0-thumb-cupom-m-d_2022-07-21-170304_esmv.png?mtime=20220721170304&focal=none">
+        </div>
+
+        <div class="box" data-value="8">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/kids-burger-thumb.png?mtime=20210916101534&focal=none">
+        </div>
+
+        <div class="box" data-value="9">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/chicken-duplo-thumb.png?mtime=20210916143308&focal=none">
+        </div>
+
+        <div class="box" data-value="10">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/chicken-duplo-thumb.png?mtime=20210916143308&focal=none">
+        </div>
+
+        <div class="box" data-value="11">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/batata-catupiry-thumb-novo.png?mtime=20240401171014&focal=none">
+        </div>
+
+        <div class="box" data-value="12">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/Guarana-Zero_500x264.png?mtime=20231221180021&focal=none">
+        </div>
+
+        <div class="box" data-value="13">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/BK-Chicken-2.png?mtime=20221202153255&focal=none">
+        </div>
+
+        <div class="box" data-value="14">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/batata-catupiry-thumb-novo.png?mtime=20240401171014&focal=none">
+        </div>
+
+        <div class="box" data-value="15">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/Guarana-Zero_500x264.png?mtime=20231221180021&focal=none">
+        </div>
+
+        <div class="box" data-value="16">
+            <img src="https://d3sn2rlrwxy0ce.cloudfront.net/BK-Chicken-2.png?mtime=20221202153255&focal=none">
+        </div>
+
+
+        <script src="script.js"></script>
+    </div>
+
+    <script>
+        let firstCard = null;
+        let secondCard = null;
+        let lock = false;
+ 
+        const boxes = document.querySelectorAll('.box');
+ 
+        boxes.forEach(box => {
+            box.classList.add('hidden');
+            box.addEventListener('click', () => {
+                if (lock || box === firstCard || box.classList.contains('matched')) return;
+ 
+                box.classList.remove('hidden');
+               
+                if (!firstCard) {
+                    firstCard = box;
+                } else {
+                    secondCard = box;
+                    lock = true;
+ 
+                    if (firstCard.dataset.value === secondCard.dataset.value) {
+                        firstCard.classList.add('matched');
+                        secondCard.classList.add('matched');
+                        resetCards();
+                    } else {
+                        setTimeout(() => {
+                            firstCard.classList.add('hidden');
+                            secondCard.classList.add('hidden');
+                            resetCards();
+                        }, 1000);
+                    }
+                }
+            });
+        });
+ 
+        function resetCards() {
+            firstCard = null;
+            secondCard = null;
+            lock = false;
+        }
+    </script>
+</body>
+</html>

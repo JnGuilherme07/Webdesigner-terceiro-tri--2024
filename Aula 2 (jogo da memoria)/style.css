@@ -1,0 +1,36 @@
+.container { 
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap:10px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px
+
+}
+
+.hidden img{
+    display: none;
+}
+
+.watched {
+    box-shadow: 0 0 0 2px rgb(22, 242, 58);
+    background-color: rgb(22, 242, 58);
+    transform: scale(1.05);
+}
+
+.hidden:hover {
+    background-color: rgb(131, 128, 128);
+    transform:
+    
+    scale (1.05);
+}
